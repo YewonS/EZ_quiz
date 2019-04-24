@@ -1,5 +1,10 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
+
+// enable cross-site requests
+app.use(cors());
 
 // import db connection and initialize
 const connection = require('./dbConnector');
@@ -24,6 +29,14 @@ app.get('/api/categories/:id', (req, res) => {
       res.json(results);
     }
   );
+});
+
+app.get('/api/questions', (req, res) => {
+  connection.query('SELECT * FROM questions', (error, results, fields) => {
+    if (error) throw error;
+
+    res.json(results);
+  });
 });
 
 app.listen(PORT, () => console.log(`App running on port: ${PORT}`));
