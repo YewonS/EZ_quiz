@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  margin-right: 2em;
+}
+
+button {
+  margin: 0 10px;
+}
